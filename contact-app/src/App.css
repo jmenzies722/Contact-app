@@ -1,95 +1,13 @@
+/* Global Styles */
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #e5e5e5; /* Softer Background Color */
-  font-family: 'Helvetica Neue', sans-serif; /* Updated Font */
-}
-
-body::before {
-  content: "";
-  display: block;
-  position: fixed; /* Fixed/sticky position */
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.1); /* White background with 10% opacity */
-  backdrop-filter: blur(10px); /* Blur the content behind the glass */
-  z-index: -1; /* Place it behind the content */
-}
-
-
-.app {
-  width: 600px;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.1); /* Same background as the body::before but you can adjust as needed */
-  border-radius: 15px;
-  backdrop-filter: blur(10px); /* Apply blur effect */
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-
-h1 {
-  text-align: center;
-  color: #333333; /* Darker Color */
-  font-weight: 400; /* Normal Weight */
-  font-size: 2rem; /* Responsive Font Size */
-}
-
-.contact-form, .contact-item {
-  background-color: #ffffff;
-  color: #121111;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1); /* Softer Shadow */
-}
-
-label, input {
-  display: block;
-  font-size: 1rem; /* Responsive Font Size */
-}
-
-label {
-  margin-bottom: 0.5rem;
-  color: #121111; /* Softer Color */
-}
-
-input {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid #e0e0e0; /* Lighter Border */
-  border-radius: 5px;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Inner Shadow for Depth */
-}
-
-button {
-  cursor: pointer;
-  background-color: #4caf50; /* More Modern Green */
-  color: #ffffff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-button:hover {
-  background-color: #4f5050; /* Lighter on Hover */
-  transform: translateY(-2px); /* Slight Lift on Hover */
-}
-
-button:active {
-  transform: translateY(0px); /* Reset on Press */
-}
-
-.contact-list {
-  list-style: none;
-  padding: 0;
+  background-color: #f3f4f6;
+  font-family: 'Poppins', sans-serif;
 }
 
 * {
@@ -97,11 +15,107 @@ button:active {
   transition: all 0.3s ease-in-out;
 }
 
-.contact-item + .contact-item {
-  margin-top: 2rem;
+/* Header */
+header {
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+  background-color: #e0a7a8;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+/* Main Content Area */
+.app {
+  max-width: 800px;
+  width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Section */
+.contact-form {
+  margin-bottom: 2rem;
+}
+
+label, input {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  color: #6b6e73;
+}
+
+input {
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #d1d4d8;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #e0a7a8;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #e5b5c0;
+  transform: translateY(-2px);
+}
+
+/* Contact List */
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: transform 0.3s;
 }
 
 .contact-item:hover {
-  background-color: #f9f9f9;
-  transform: scale(1.02);
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+  background-color: #e0a7a8;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .app {
+      width: 95%; /* increased width to give more space on smaller devices */
+      padding: 7rem; /* reduced padding for smaller devices */
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 20px;
+  }
+
+
+  header, footer {
+    font-weight: 500;
+  }
 }
