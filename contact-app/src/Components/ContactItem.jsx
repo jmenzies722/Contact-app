@@ -1,7 +1,7 @@
 import  { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function ContactItem({ contact, deleteContact, updateContact }) { // Renamed editContact to updateContact
+function ContactItem({ contact, deleteContact, updateContact }) { 
   const [isEditing, setIsEditing] = useState(false);
   const [editedName, setEditedName] = useState(contact.name);
   const [editedEmail, setEditedEmail] = useState(contact.email);
