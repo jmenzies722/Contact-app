@@ -3,13 +3,26 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
+// Helper function to format phone number with dashes
+const formatPhoneNumber = (inputNumber) => {
+  const val = inputNumber.replace(/[^\d]/g, "");
+  if (val.length <= 3) {
+    return val;
+  } else if (val.length <= 6) {
+    return `${val.slice(0, 3)}-${val.slice(3)}`;
+  } else {
+    return `${val.slice(0, 3)}-${val.slice(3, 6)}-${val.slice(6, 10)}`;
+  }
+};
+
 function ContactForm({ addContact, editingContact }) {
+  // Using the helper function to set the initial state
   const [name, setName] = useState(editingContact ? editingContact.name : "");
   const [email, setEmail] = useState(
     editingContact ? editingContact.email : ""
   );
   const [phone, setPhone] = useState(
-    editingContact ? editingContact.phone : ""
+    editingContact ? formatPhoneNumber(editingContact.phone) : ""
   );
 
   // Update the form fields when editingContact changes
@@ -17,7 +30,7 @@ function ContactForm({ addContact, editingContact }) {
     if (editingContact) {
       setName(editingContact.name);
       setEmail(editingContact.email);
-      setPhone(editingContact.phone);
+      setPhone(formatPhoneNumber(editingContact.phone));
     } else {
       setName("");
       setEmail("");
@@ -80,10 +93,9 @@ function ContactForm({ addContact, editingContact }) {
             );
           }
         }}
-        pattern="\d{3}-\d{3}-\d{4}" // Ensure the format is XXX-XXX-XXXX
+        pattern="\d{3}-\d{3}-\d{4}" // format is XXX-XXX-XXXX
         required
       />
-
       <button type="submit">
         {editingContact ? "Save Changes" : "Add Contact"}
       </button>
