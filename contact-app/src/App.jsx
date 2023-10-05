@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ContactList from './Components/ContactList.jsx';
 import ContactForm from './Components/ContactForm.jsx';
 import './App.css';
 
 function App() {
-  const [contacts, setContacts] = useState([]);
-  const [editingContact, setEditingContact] = useState(null); // To track which contact is being edited
+  const initialContacts = JSON.parse(localStorage.getItem('contacts')) || [];
+  const [contacts, setContacts] = useState(initialContacts);
+  const [editingContact, setEditingContact] = useState(null);
+  const [viewAll, setViewAll] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
 
   const addContact = (contact) => {
     if(editingContact) {
@@ -25,17 +31,17 @@ function App() {
       contact.id === id ? {...updatedContact, id} : contact
     ));
   };
-
-  const editContact = (id) => {
-    const contact = contacts.find(contact => contact.id === id);
-    setEditingContact(contact);
-  };
+  
 
   return (
     <div className="app">
       <h1>CALL ME MAYBE</h1>
       <ContactForm addContact={addContact} editingContact={editingContact} />
-      <ContactList contacts={contacts} deleteContact={deleteContact} editContact={editContact} />
+      <button onClick={() => setViewAll(!viewAll)}>
+        {viewAll ? "Hide Contacts" : "View All"}
+      </button>
+      {viewAll && <ContactList contacts={contacts} deleteContact={deleteContact} editContact={updateContact} />
+}
     </div>
   );
 }

@@ -1,17 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
-function ContactForm({ addContact }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+function ContactForm({ addContact, editingContact }) {
+  const [name, setName] = useState(editingContact ? editingContact.name : "");
+  const [email, setEmail] = useState(editingContact ? editingContact.email : "");
+  const [phone, setPhone] = useState(editingContact ? editingContact.phone : "");
+
+  // Update the form fields when editingContact changes
+  useEffect(() => {
+    if (editingContact) {
+      setName(editingContact.name);
+      setEmail(editingContact.email);
+      setPhone(editingContact.phone);
+    } else {
+      setName("");
+      setEmail("");
+      setPhone("");
+    }
+}, [editingContact]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !email || !phone) return;
-    addContact({ name, email, phone });
+
+    addContact({
+      id: editingContact ? editingContact.id : Date.now(),
+      name, 
+      email, 
+      phone
+    });
+
+    // Clear the form
     setName("");
     setEmail("");
     setPhone("");
@@ -41,13 +62,14 @@ function ContactForm({ addContact }) {
         pattern="\d*"
         required
       />
-      <button type="submit">Add Contact</button>
+      <button type="submit">{editingContact ? "Save Changes" : "Add Contact"}</button>
     </form>
   );
 }
 
 ContactForm.propTypes = {
   addContact: PropTypes.func.isRequired,
+  editingContact: PropTypes.object
 };
 
 export default ContactForm;

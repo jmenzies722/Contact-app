@@ -5,7 +5,12 @@ function ContactList({ contacts, deleteContact, editContact }) {
   return (
     <ul className="contact-list">
       {contacts.map(contact => (
-        <ContactItem key={contact.id} contact={contact} deleteContact={deleteContact} editContact={editContact} />
+       <ContactItem
+       key={contact.id}
+       contact={contact}
+       deleteContact={deleteContact}
+       updateContact={editContact}  // Passing down the updateContact function
+     />
       ))}
     </ul>
   );
