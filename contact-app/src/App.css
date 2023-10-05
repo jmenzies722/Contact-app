@@ -6,10 +6,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #32D2C9 0%, #FF6B81 100%); /* Gradient Turquoise to Pink */
-  font-family: 'Poppins', sans-serif;
-  font-size: 18px; /* Slight reduce for better proportion */
-  color: #FFF;
+  background: linear-gradient(135deg, #32d2c9 0%, #ff6b81 100%);
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  color: #fff;
 }
 
 * {
@@ -19,25 +19,25 @@ body {
 
 /* Header */
 header {
-  width: 70%; 
+  width: 70%;
   padding: 2.5rem 0;
   text-align: center;
-  background-color: rgba(255,255,255,0.15); /* Transparent White */
+  background-color: rgba(255, 255, 255, 0.15);
   color: #000;
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 1.5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-radius: 20px; /* Added for rounded look */
+  border-radius: 20px;
 }
 
 /* Main Content Area */
 .app {
-  max-width: 700px; /* Reduced size */
-  width: 400px; 
+  max-width: 700px;
+  width: 400px;
   margin: 2rem auto;
-  padding: 2.5rem; 
-  background-color: rgba(255,255,255,0.1);
+  padding: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 25px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
@@ -47,10 +47,11 @@ header {
   margin-bottom: 2rem;
 }
 
-label, input {
+label,
+input {
   display: block;
   width: 100%;
-  font-size: 1rem; 
+  font-size: 1rem;
 }
 
 label {
@@ -63,15 +64,15 @@ input {
   border: 1.5px solid #d6a9b0;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.15);
-  color: #FFF;
+  color: #fff;
 }
 
 button {
   cursor: pointer;
-  color: #FFF;
-  background-color: #9C4DCC;
+  color: #fff;
+  background-color: #9c4dcc;
   padding: 1rem 2rem;
-  margin-right: 1rem; 
+  margin-right: 1rem;
   border: none;
   border-radius: 15px;
   font-weight: 600;
@@ -79,7 +80,7 @@ button {
 }
 
 button:hover {
-  background-color: #863DAD;
+  background-color: #863dad;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -88,40 +89,51 @@ button:hover {
   list-style: none;
   padding: 0;
   width: 100%;
-  font-family: 'Roboto', sans-serif; /* Setting the font to Roboto */
+  font-family: "Roboto", sans-serif;
 }
 
 .contact-item {
   padding: 1.5rem;
   margin: 1rem 0;
   border-radius: 15px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.25));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.25)
+  );
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
-
 .contact-item > div {
   flex: 1;
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-  color: #b3085d;  
-  font-weight: 500;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  color: #b3085d;
+  font-weight: 300;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s;
+}
+
+.contact-item > div:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .contact-item > div:not(:last-child) {
-  border-right: 2px dotted #b3085d; 
-  padding-right: 1rem;
-  margin-right: 1rem;
+  border-right: 1.5px dotted #b3085d;
+  margin-right: 1.5rem;
 }
 /* Footer */
 footer {
   width: 100%;
   padding: 1.5rem 0;
   text-align: center;
-  background-color: rgba(255,255,255,0.15);
+  background-color: rgba(255, 255, 255, 0.15);
   color: #000;
   font-size: 1.3rem;
   font-weight: 600;
@@ -135,23 +147,25 @@ footer {
       padding: 1rem;
       width: 100%;
     }
-  
-    header, footer {
+
+    header,
+    footer {
       font-size: 1.6rem;
     }
-  
-    input, label {
+
+    input,
+    label {
       font-size: 0.9rem;
     }
-  
+
     .contact-item {
       flex-direction: column;
       align-items: flex-start;
     }
-  
+
     .contact-item > div:not(:last-child) {
       border-right: none;
-      border-bottom: 1px dotted #FFDAB9; 
+      border-bottom: 1px dotted #ffdab9;
       padding-bottom: 0.5rem;
       margin-bottom: 0.5rem;
     }

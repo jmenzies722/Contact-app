@@ -1,7 +1,7 @@
-import  { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-function ContactItem({ contact, deleteContact, updateContact }) { 
+function ContactItem({ contact, deleteContact, updateContact }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedName, setEditedName] = useState(contact.name);
   const [editedEmail, setEditedEmail] = useState(contact.email);
@@ -14,12 +14,12 @@ function ContactItem({ contact, deleteContact, updateContact }) {
   const handleSave = () => {
     updateContact(contact.id, {
       name: editedName,
-      email: editedEmail,
       phone: editedPhone,
+      email: editedEmail,
     });
     setIsEditing(false);
   };
-  
+
   const handleCancel = () => {
     setIsEditing(false);
     setEditedName(contact.name);
@@ -32,13 +32,25 @@ function ContactItem({ contact, deleteContact, updateContact }) {
       {isEditing ? (
         <>
           <div>
-            Name: <input value={editedName} onChange={(e) => setEditedName(e.target.value)} />
+            Name:{" "}
+            <input
+              value={editedName}
+              onChange={(e) => setEditedName(e.target.value)}
+            />
           </div>
           <div>
-            Email: <input value={editedEmail} onChange={(e) => setEditedEmail(e.target.value)} />
+            Email:{" "}
+            <input
+              value={editedEmail}
+              onChange={(e) => setEditedEmail(e.target.value)}
+            />
           </div>
           <div>
-            Phone: <input value={editedPhone} onChange={(e) => setEditedPhone(e.target.value)} />
+            Phone:{" "}
+            <input
+              value={editedPhone}
+              onChange={(e) => setEditedPhone(e.target.value)}
+            />
           </div>
           <button onClick={handleSave}>Save</button>
           <button onClick={handleCancel}>Cancel</button>
@@ -58,7 +70,7 @@ function ContactItem({ contact, deleteContact, updateContact }) {
 
 ContactItem.propTypes = {
   deleteContact: PropTypes.func.isRequired,
-  updateContact: PropTypes.func.isRequired,  // Changed to updateContact
+  updateContact: PropTypes.func.isRequired, // Changed to updateContact
   contact: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
